@@ -15,7 +15,7 @@ public:
  int left = 0;
  int right=0;
 vector<int> ans;
-//iterating int temp array
+//iterating into temp array
 while(leftptr<=rightptr){
     //will break at the 2 numbers whose sum is target
     //leftptr=first number
