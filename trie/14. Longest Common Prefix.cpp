@@ -1,4 +1,6 @@
-
+//make a trie and add a variable named body count in it
+//body count will show the number of child a node has
+// node has one child than that character is common and hence add it to ans
 
 class TrieNode{
 
@@ -39,6 +41,7 @@ class Trie{
 
             if(!node->children[index]){
                 node->children[index]=new TrieNode(word[i]);
+                //increase the count of children;
                 node->bodyCount++;
             }
 
@@ -48,13 +51,16 @@ class Trie{
         node->isTerminal=true;
     }
     void well(string word,string &ans){
+        //base case
     if(word.length()==0){
         return ;
     }
     TrieNode* child;
     char ch = word[0];
+        //index to iterate through node
     int index = ch-'a';
          if(root->bodyCount==1  && root->children[index]!=NULL){
+             //handling edge case
             if(root-> isTerminal){
                 return;
             }
