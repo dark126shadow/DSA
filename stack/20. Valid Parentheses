@@ -1,0 +1,38 @@
+class Solution {
+public:
+//put the oppening brackets in a stack 
+//make map linking opening and closing brackedts
+//compare those two using a for loop
+    bool isValid(string s) {
+        stack<char> temp;
+        map<char,char> m;
+        //making a hashmap
+        m[')']='(';
+        m['}']='{';
+        m[']']='[';
+        bool ans = false;
+        int n=s.length();
+        for(int i =0;i<n;i++){
+            //push opening brackets in the stack
+            if(s[i]=='(' || s[i]=='{'||s[i]=='['){
+                temp.push(s[i]);
+                ans=false;
+            }
+            //match the elements
+            else if(!temp.empty()&&m[s[i]]==temp.top()){
+                    ans= true;
+                    temp.pop();
+                }
+            else {
+                return false;
+            }
+        
+        }
+        //base case
+        if(!temp.empty()){
+            return false;
+        }
+
+        return ans;
+    }
+};
