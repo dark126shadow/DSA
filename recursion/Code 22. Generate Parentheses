@@ -1,0 +1,32 @@
+class Solution {
+public:
+//use recurion to make a tree
+
+    vector<string> generateParenthesis(int n) {
+   //intitialise the ans vector
+        vector<string> ans;
+        
+        recursive(ans,n,"",0,0);
+        return ans;
+    }
+    //two variables open and close to keep track  of opening bracked and closing bracked
+    void recursive(vector<string> &ans,int n,string temp,int open,int close){
+        //base case
+        if(open == close && open+close == n*2){
+            ans.push_back(temp);
+            return;
+        }
+        //we first need to put three opening brackets
+          if(open<n){
+            recursive(ans,n,temp+"(",open+1,close);
+          }
+          //there can not be more closing brackets than opening 
+            if(close<open){
+            recursive(ans,n,temp+")",open,close+1);
+          }
+
+        
+        
+        
+    }
+};
